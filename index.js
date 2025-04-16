@@ -37,6 +37,7 @@
  *                     type: string
  */
 const express = require("express");
+const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
 
@@ -57,6 +58,20 @@ app.use(cors());
 //     credentials: true,
 //   })
 // );
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Anime API",
+      version: "1.0.0",
+      description: "API per recuperare informazioni sugli anime",
+    },
+  },
+  apis: ["./index.js"],
+};
+
+const specs = swaggerJsdoc(options);
 
 // Connessione a MongoDB
 const uri =
@@ -116,7 +131,7 @@ app.get("/api/movies", async (req, res) => {
 });
 
 // Swagger UI
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(port, () => {
   console.log(`Server in ascolto su http://localhost:${port}`);

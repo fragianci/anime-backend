@@ -1,0 +1,66 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Anime API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/anime": {
+      "get": {
+        "summary": "Ottiene una lista di anime",
+        "responses": {
+          "200": {
+            "description": "Lista di anime",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "string"
+                      },
+                      "genres": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "num_mflix_comments": {
+                        "type": "integer"
+                      },
+                      "poster": {
+                        "type": "string"
+                      },
+                      "fullplot": {
+                        "type": "string"
+                      },
+                      "cast": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "year": {
+                        "type": "integer"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
